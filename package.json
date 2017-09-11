@@ -1,0 +1,26 @@
+{
+  "name": "path-resolve",
+  "version": "1.0.0",
+  "description": "A browser polyfill for Node.js path.resolve",
+  "main": "path-resolve.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BTOdell/path-resolve.git"
+  },
+  "keywords": [
+    "node",
+    "path",
+    "resolve"
+  ],
+  "author": "btodell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BTOdell/path-resolve/issues"
+  },
+  "homepage": "https://github.com/BTOdell/path-resolve#readme",
+  "devDependencies": {
+    "@types/node": "^8.0.28",
+    "typescript": "^2.5.2"
+  },
+  "dependencies": {}
+}

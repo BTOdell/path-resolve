@@ -1,0 +1,6 @@
+.idea
+.npmignore
+.gitignore
+path-resolve.ts
+path-resolve.js.map
+tsconfig.json

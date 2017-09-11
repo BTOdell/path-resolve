@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es3",
+        "baseUrl": "node_modules",
+        "forceConsistentCasingInFileNames": true,
+        "declaration": true,
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true
+    }
+}
