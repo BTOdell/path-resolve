@@ -25,13 +25,17 @@ try {
     resolve = require("path").resolve;
 } catch {
     // If require("path") fails, then load polyfill
+    
+    const SLASH: number = 47;
+    const DOT: number = 46;
+    
     /**
      * Resolves . and .. elements in a path with directory names
      * @param {string} path
      * @param {boolean} allowAboveRoot
      * @return {string}
      */
-    const normalizeStringPosix = function (path: string, allowAboveRoot: boolean) {
+    const normalizeStringPosix = function (path: string, allowAboveRoot: boolean): string {
         let res = '';
         let lastSlash = -1;
         let dots = 0;
@@ -40,23 +44,23 @@ try {
         for (let i = 0; i <= path.length; ++i) {
             if (i < path.length) {
                 code = path.charCodeAt(i);
-            } else if (code === 47/*/*/) {
+            } else if (code === SLASH) {
                 break;
             } else {
-                code = 47/*/*/;
+                code = SLASH;
             }
-            if (code === 47/*/*/) {
+            if (code === SLASH) {
                 if (lastSlash === i - 1 || dots === 1) {
                     // NOOP
                 } else if (lastSlash !== i - 1 && dots === 2) {
                     if (res.length < 2 || !isAboveRoot ||
-                        res.charCodeAt(res.length - 1) !== 46/*.*/ ||
-                        res.charCodeAt(res.length - 2) !== 46/*.*/) {
+                        res.charCodeAt(res.length - 1) !== DOT ||
+                        res.charCodeAt(res.length - 2) !== DOT) {
                         if (res.length > 2) {
                             const start = res.length - 1;
                             let j = start;
                             for (; j >= 0; --j) {
-                                if (res.charCodeAt(j) === 47/*/*/) {
+                                if (res.charCodeAt(j) === SLASH) {
                                     break;
                                 }
                             }
@@ -94,7 +98,7 @@ try {
                 }
                 lastSlash = i;
                 dots = 0;
-            } else if (code === 46/*.*/ && dots !== -1) {
+            } else if (code === DOT && dots !== -1) {
                 ++dots;
             } else {
                 dots = -1;
@@ -119,7 +123,8 @@ try {
                 path = paths[i];
             } else {
                 if (cwd === void 0) {
-                    cwd = window.location.pathname;
+                    const pathname: string = window.location.pathname;
+                    cwd = pathname.slice(0, pathname.lastIndexOf("/") + 1);
                 }
                 path = cwd;
             }
@@ -128,7 +133,7 @@ try {
                 continue;
             }
             resolvedPath = path + "/" + resolvedPath;
-            resolvedAbsolute = path.charCodeAt(0) === 47/*/*/;
+            resolvedAbsolute = path.charCodeAt(0) === SLASH;
         }
         // At this point the path should be resolved to a full absolute path, but
         // handle relative paths to be safe (might happen when process.cwd() fails)

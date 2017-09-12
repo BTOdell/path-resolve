@@ -26,6 +26,8 @@ try {
 }
 catch (_a) {
     // If require("path") fails, then load polyfill
+    var SLASH_1 = 47;
+    var DOT_1 = 46;
     /**
      * Resolves . and .. elements in a path with directory names
      * @param {string} path
@@ -42,25 +44,25 @@ catch (_a) {
             if (i < path.length) {
                 code = path.charCodeAt(i);
             }
-            else if (code === 47 /*/*/) {
+            else if (code === SLASH_1) {
                 break;
             }
             else {
-                code = 47 /*/*/;
+                code = SLASH_1;
             }
-            if (code === 47 /*/*/) {
+            if (code === SLASH_1) {
                 if (lastSlash === i - 1 || dots === 1) {
                     // NOOP
                 }
                 else if (lastSlash !== i - 1 && dots === 2) {
                     if (res.length < 2 || !isAboveRoot ||
-                        res.charCodeAt(res.length - 1) !== 46 /*.*/ ||
-                        res.charCodeAt(res.length - 2) !== 46 /*.*/) {
+                        res.charCodeAt(res.length - 1) !== DOT_1 ||
+                        res.charCodeAt(res.length - 2) !== DOT_1) {
                         if (res.length > 2) {
                             var start = res.length - 1;
                             var j = start;
                             for (; j >= 0; --j) {
-                                if (res.charCodeAt(j) === 47 /*/*/) {
+                                if (res.charCodeAt(j) === SLASH_1) {
                                     break;
                                 }
                             }
@@ -103,7 +105,7 @@ catch (_a) {
                 lastSlash = i;
                 dots = 0;
             }
-            else if (code === 46 /*.*/ && dots !== -1) {
+            else if (code === DOT_1 && dots !== -1) {
                 ++dots;
             }
             else {
@@ -132,7 +134,8 @@ catch (_a) {
             }
             else {
                 if (cwd === void 0) {
-                    cwd = window.location.pathname;
+                    var pathname = window.location.pathname;
+                    cwd = pathname.slice(0, pathname.lastIndexOf("/") + 1);
                 }
                 path = cwd;
             }
@@ -141,7 +144,7 @@ catch (_a) {
                 continue;
             }
             resolvedPath = path + "/" + resolvedPath;
-            resolvedAbsolute = path.charCodeAt(0) === 47 /*/*/;
+            resolvedAbsolute = path.charCodeAt(0) === SLASH_1;
         }
         // At this point the path should be resolved to a full absolute path, but
         // handle relative paths to be safe (might happen when process.cwd() fails)

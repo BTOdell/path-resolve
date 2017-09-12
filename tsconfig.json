@@ -1,8 +1,8 @@
 {
+    "compileOnSave": true,
     "compilerOptions": {
         "module": "commonjs",
         "target": "es3",
-        "baseUrl": "node_modules",
         "forceConsistentCasingInFileNames": true,
         "declaration": true,
         "alwaysStrict": true,
