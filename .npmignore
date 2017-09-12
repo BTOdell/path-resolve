@@ -1,5 +1,5 @@
 .idea
 .npmignore
 .gitignore
-index.ts
+path-resolve.ts
 tsconfig.json

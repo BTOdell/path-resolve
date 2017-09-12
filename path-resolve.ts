@@ -20,8 +20,9 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 let resolve: (...paths: string[]) => string;
+
 try {
-    // Attempt to load Node.js path.resolve
+    // Attempt to load function from Node.js
     resolve = require("path").resolve;
 } catch {
     // If require("path") fails, then load polyfill

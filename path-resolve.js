@@ -21,7 +21,7 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 var resolve;
 try {
-    // Attempt to load Node.js path.resolve
+    // Attempt to load function from Node.js
     resolve = require("path").resolve;
 }
 catch (_a) {
