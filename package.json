@@ -2,7 +2,7 @@
     "name": "path-resolve",
     "version": "1.0.0",
     "description": "A browser polyfill for Node.js path.resolve",
-    "main": "index",
+    "main": "index.js",
     "devDependencies": {
         "@types/node": "^8.0.28",
         "typescript": "^2.5.2"
