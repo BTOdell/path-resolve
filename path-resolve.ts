@@ -23,7 +23,7 @@ const SLASH: number = 47;
 const DOT: number = 46;
 
 let getCWD: () => string;
-if (typeof process !== "undefined") {
+if (typeof process !== "undefined" && typeof process.cwd !== "undefined") {
     getCWD = process.cwd;
 } else {
     getCWD = function() {

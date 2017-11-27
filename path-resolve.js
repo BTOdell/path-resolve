@@ -22,7 +22,7 @@
 var SLASH = 47;
 var DOT = 46;
 var getCWD;
-if (typeof process !== "undefined") {
+if (typeof process !== "undefined" && typeof process.cwd !== "undefined") {
     getCWD = process.cwd;
 }
 else {
