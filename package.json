@@ -1,12 +1,10 @@
 {
-    "name": "path-resolve",
-    "version": "1.0.1",
-    "description": "A browser polyfill for Node.js path.resolve",
-    "main": "path-resolve.js",
-    "types": "path-resolve.d.ts",
+    "name": "@btodell/path-resolve",
+    "version": "1.1.0",
+    "description": "A ponyfill for Node.js path.resolve",
+    "main": "index.js",
     "devDependencies": {
-        "@types/node": "^8.0.53",
-        "typescript": "^2.6.1"
+        "typescript": "^2.8.1"
     },
     "repository": {
         "type": "git",

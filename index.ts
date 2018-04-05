@@ -22,6 +22,9 @@
 const SLASH: number = 47;
 const DOT: number = 46;
 
+// Node.js process variable
+declare const process: { cwd: () => string };
+
 let getCWD: () => string;
 if (typeof process !== "undefined" && typeof process.cwd !== "undefined") {
     getCWD = process.cwd;
