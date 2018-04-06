@@ -1,5 +1,5 @@
 {
-    "name": "@btodell/path-resolve",
+    "name": "@einheit/path-resolve",
     "version": "1.1.0",
     "description": "A ponyfill for Node.js path.resolve",
     "main": "index.js",
